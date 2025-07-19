@@ -1,0 +1,21 @@
+import pandas as pd
+import pickle
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Load or define your DataFrame
+# Example: new_df = pd.read_csv('movies.csv')
+# Or load a pre-processed one
+new_df = pickle.load(open('movie_list.pkl', 'rb'))  # This must exist
+
+# Vectorization
+cv = CountVectorizer(max_features=5000, stop_words='english')
+vectors = cv.fit_transform(new_df['tags']).toarray()
+
+# Similarity calculation
+similarity = cosine_similarity(vectors)
+
+# Save the similarity matrix
+with open('similarity.pkl', 'wb') as f:
+    pickle.dump(similarity, f)
+
