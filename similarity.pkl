@@ -1,0 +1,4 @@
+from sklearn.metrics.pairwise import cosine_similarity
+
+similarity = cosine_similarity(movie_vectors)  # or similar variable
+pickle.dump(similarity, open('similarity.pkl', 'wb'))
