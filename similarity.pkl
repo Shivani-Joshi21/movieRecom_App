@@ -17,5 +17,5 @@ similarity = cosine_similarity(vectors)
 
 # Save the similarity matrix
 with open('similarity.pkl', 'wb') as f:
-    pickle.dump(similarity, f)
+    pickle.dump(new_df, f)
 
